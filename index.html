@@ -2,339 +2,80 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>L'WESMOU OS | V0.5 Premium</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمال ملوكي | L'WESMOU OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="matte-theme">
+<body>
 
-    <div id="preloader">
-        <div class="loader-v5-wrapper">
-            <div class="loader-v5-logo">
-                <div class="logo-orb"></div>
-                <div class="logo-v5-text">L'WESMOU<span class="accent">OS</span></div>
+    <div class="main-wrapper">
+        <header class="profile-header">
+            <div class="logo-area">
+                <span class="brand-name">L'WESMOU <span class="os">OS</span></span>
+                <p class="tagline">PRIVACY FIRST OS</p>
             </div>
-            <div class="loader-v5-bar-area">
-                <div class="loader-v5-info">
-                    <span id="loadStatus">BOOTING SYSTEM...</span>
-                    <span id="loadPercent">0%</span>
-                </div>
-                <div class="progress-v5-container">
-                    <div class="progress-v5-fill" id="loadBar"></div>
-                </div>
+            
+            <div class="dev-info">
+                <h1>جمال ملوكي</h1>
+                <h2>مطور أنظمة ومهندس خصوصية</h2>
+                <p class="bio">شغوف ببناء برمجيات تحترم سيادة المستخدم على بياناته. مطور مشروع L'WESMOU OS.</p>
             </div>
-            <div id="consoleLines" class="loader-v5-console"></div>
-        </div>
+        </header>
+
+        <section class="skills-section">
+            <span class="skill-badge">CyberSecurity</span>
+            <span class="skill-badge">Android Dev</span>
+            <span class="skill-badge">UI/UX</span>
+            <span class="skill-badge">Linux</span>
+        </section>
+
+        <section class="social-links-section">
+            <h3>تواصل معي</h3>
+            <div class="links-grid">
+                <a href="https://t.me/MLk_JAMAL" target="_blank" class="social-card telegram">
+                    <i class="fab fa-telegram"></i>
+                    <span>تلجرام</span>
+                </a>
+                <a href="https://www.tiktok.com/@mellouki_djamal?_r=1&_t=ZS-94avBwp3vs4" target="_blank" class="social-card tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>تيك توك</span>
+                </a>
+                <a href="https://instagram.com/mellouki_djamal" target="_blank" class="social-card instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>انستغرام</span>
+                </a>
+                <a href="https://wa.me/213776243941" target="_blank" class="social-card whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب</span>
+                </a>
+                <a href="https://t.me/LWESMOU" target="_blank" class="social-card bot-channel">
+                    <i class="fas fa-robot"></i>
+                    <span>قناة البوت</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p>&copy; 2024 جميع الحقوق محفوظة لجمال ملوكي.</p>
+            <button id="openPrivacy" class="policy-btn">سياسة الخصوصية والاستخدام</button>
+        </footer>
     </div>
 
-    <header id="site-header">
-        <div class="header-top-bar">
-            <div class="top-bar-content">
-                <div class="system-status">
-                    <span id="digitalClock">00:00:00</span>
-                    <span class="status-sep">|</span>
-                    <span class="footer-v5-status">Secure Kernel Active</span>
-                </div>
-                <div class="system-version">BUILD: 2026.0.5.STABLE</div>
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>سياسة الخصوصية والاستخدام</h3>
+                <button id="closeModal" class="close-btn">&times;</button>
             </div>
-        </div>
-        <nav class="main-navigation">
-            <div class="nav-inner-wrapper">
-                <div class="brand-v5">
-                    <a href="#home" class="brand-link">
-                        <div class="brand-icon"><i class="fas fa-shield-halved"></i></div>
-                        <div class="brand-text">
-                            <span class="main-name">L'WESMOU</span>
-                            <span class="sub-name">Privacy First OS</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="nav-menu-desktop">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="#home" class="nav-link active"><span class="nav-num">01</span><span class="nav-txt">الرئيسية</span></a></li>
-                        <li class="nav-item"><a href="#vision" class="nav-link"><span class="nav-num">02</span><span class="nav-txt">الرؤية</span></a></li>
-                        <li class="nav-item"><a href="#tools" class="nav-link"><span class="nav-num">03</span><span class="nav-txt">الأدوات</span></a></li>
-                        <li class="nav-item"><a href="#roadmap" class="nav-link"><span class="nav-num">04</span><span class="nav-txt">خارطة الطريق</span></a></li>
-                        <li class="nav-item"><a href="#developer" class="nav-link"><span class="nav-num">05</span><span class="nav-txt">المطور</span></a></li>
-                    </ul>
-                </div>
-                <button class="hamburger-v5" id="sidebarToggle">
-                    <div class="ham-box"><div class="ham-inner"></div></div>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <aside id="main-sidebar">
-        <div class="sidebar-v5-header">
-            <span class="sidebar-v5-title">الإعدادات المتقدمة</span>
-            <button id="sidebarCloseBtn" class="close-sidebar-v5"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="sidebar-v5-content">
-            <div class="sidebar-v5-search">
-                <input type="text" placeholder="بحث في النظام...">
-                <i class="fas fa-search"></i>
-            </div>
-            <nav class="sidebar-v5-nav">
-                <div class="nav-group">
-                    <span class="group-label">الوصول السريع</span>
-                    <a href="#home" class="side-nav-link"><i class="fas fa-home"></i> لوحة التحكم</a>
-                    <a href="#tools" class="side-nav-link"><i class="fas fa-cube"></i> مجمع الأدوات</a>
-                </div>
-                <div class="nav-group">
-                    <span class="group-label">الدعم والقانون</span>
-                    <a href="#" id="privacyOpenBtn" class="side-nav-link"><i class="fas fa-user-shield"></i> سياسة الخصوصية</a>
-                    <a href="#faq" class="side-nav-link"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a>
-                </div>
-            </nav>
-        </div>
-    </aside>
-
-    <main id="main-content">
-        <section class="hero-v5-section" id="home">
-            <div class="hero-v5-bg">
-                <canvas id="neonCanvas"></canvas>
-                <div class="noise-overlay"></div>
-                <div class="grid-overlay"></div>
-            </div>
-            <div class="container hero-v5-grid">
-                <div class="hero-v5-content animate-v5">
-                    <div class="hero-v5-label">
-                        <span class="label-dot"></span>
-                        <span class="label-text">نظام التشغيل الجزائري الأكثر أماناً</span>
-                    </div>
-                    <h1 class="hero-v5-title">
-                        بياناتك، منطقتك، <br>
-                        <span class="gradient-text">خصوصيتك المطلقة.</span>
-                    </h1>
-                    <p class="hero-v5-paragraph">
-                        اختبر القوة الحقيقية لـ L'WESMOU OS. نظام متكامل يعمل بالكامل على جهازك 
-                        بدون سحابة، بدون تتبع، وبأداء يفوق كل التوقعات.
-                    </p>
-                    <div class="hero-v5-cta">
-                        <a href="https://t.me/LWESMOU" class="cta-primary-v5">
-                            <i class="fab fa-telegram-plane"></i> ابدأ التحميل الآن
-                        </a>
-                        <a href="#tools" class="cta-secondary-v5">
-                            <i class="fas fa-microchip"></i> استكشف الأدوات
-                        </a>
-                    </div>
-                    <div class="hero-v5-stats">
-                        <div class="stat-v5-box">
-                            <span class="stat-v5-num">100%</span>
-                            <span class="stat-v5-label">معالجة محلية</span>
-                        </div>
-                        <div class="stat-v5-box">
-                            <span class="stat-v5-num">AES</span>
-                            <span class="stat-v5-label">تشفير عسكري</span>
-                        </div>
-                        <div class="stat-v5-box">
-                            <span class="stat-v5-num">V0.5</span>
-                            <span class="stat-v5-label">أحدث إصدار</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="vision-v5-section" id="vision">
-            <div class="container">
-                <div class="section-v5-head">
-                    <span class="v5-subtitle">فلسفة النظام</span>
-                    <h2 class="v5-title">لماذا L'WESMOU OS؟</h2>
-                    <div class="v5-head-line"></div>
-                </div>
-                <div class="vision-v5-grid">
-                    <div class="vision-v5-card">
-                        <div class="v5-card-icon"><i class="fas fa-user-shield"></i></div>
-                        <h3 class="v5-card-title">الخصوصية كحق</h3>
-                        <p class="v5-card-text">لا نؤمن بالحلول الوسط. بياناتك لا تغادر هاتفك أبداً، جميع الأدوات تعمل في بيئة معزولة تماماً عن الإنترنت.</p>
-                        <ul class="v5-card-list">
-                            <li><i class="fas fa-check"></i> لا توجد سيرفرات خارجية</li>
-                            <li><i class="fas fa-check"></i> تحكم كامل في الأذونات</li>
-                        </ul>
-                    </div>
-                    <div class="vision-v5-card">
-                        <div class="v5-card-icon"><i class="fas fa-bolt"></i></div>
-                        <h3 class="v5-card-title">سرعة الاستجابة</h3>
-                        <p class="v5-card-text">بفضل الكود النظيف والمعالجة المحلية، تحصل على استجابة فورية للأوامر دون انتظار تحميل البيانات من السحابة.</p>
-                        <ul class="v5-card-list">
-                            <li><i class="fas fa-check"></i> توفير استهلاك الرام</li>
-                            <li><i class="fas fa-check"></i> إدارة ذكية للبطارية</li>
-                        </ul>
-                    </div>
-                    <div class="vision-v5-card">
-                        <div class="v5-card-icon"><i class="fas fa-code"></i></div>
-                        <h3 class="v5-card-title">هندسة متطورة</h3>
-                        <p class="v5-card-text">تم بناء النظام من الصفر ليكون متوافقاً مع احتياجات المستخدم التقني والمحترف الذي يبحث عن الفاعلية.</p>
-                        <ul class="v5-card-list">
-                            <li><i class="fas fa-check"></i> تحديثات مستمرة</li>
-                            <li><i class="fas fa-check"></i> واجهة مستخدم Ultra-Matte</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="tools-v5-section" id="tools">
-            <div class="container">
-                <div class="section-v5-head">
-                    <span class="v5-subtitle">ترسانة الأدوات</span>
-                    <h2 class="v5-title">مجمع الأدوات الذكي</h2>
-                    <div class="v5-head-line"></div>
-                </div>
-                <div class="tools-v5-detailed-grid">
-                    <div class="tool-v5-item">
-                        <div class="tool-v5-content">
-                            <div class="tool-v5-header">
-                                <div class="tool-v5-icon"><i class="fas fa-download"></i></div>
-                                <div>
-                                    <span class="tool-v5-tag">الوسائط</span>
-                                    <h3 class="tool-v5-name">مدير التحميلات الفائق</h3>
-                                </div>
-                            </div>
-                            <p class="tool-v5-description">نظام تحميل يعتمد على تعدد المسارات لضمان أقصى سرعة. يدعم دمج الفيديو والصوت تلقائياً بجودة تصل لـ 4K وبخصوصية تامة.</p>
-                            <div class="tool-v5-features">
-                                <span><i class="fas fa-check"></i> سرعة مضاعفة</span>
-                                <span><i class="fas fa-check"></i> دعم كافة الصيغ</span>
-                            </div>
-                            <a href="#" class="tool-v5-btn">عرض التفاصيل التقنية <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                        <div class="tool-v5-visual"></div>
-                    </div>
-                    <div class="tool-v5-item reverse">
-                        <div class="tool-v5-content">
-                            <div class="tool-v5-header">
-                                <div class="tool-v5-icon"><i class="fas fa-vault"></i></div>
-                                <div>
-                                    <span class="tool-v5-tag">الأمان</span>
-                                    <h3 class="tool-v5-name">خزنة البيانات المشفرة</h3>
-                                </div>
-                            </div>
-                            <p class="tool-v5-description">مساحة معزولة كلياً محمية بخوارزمية AES-256. مفاتيح التشفير مخزنة في المنطقة الآمنة داخل المعالج ولا يمكن لأي تطبيق آخر الوصول إليها.</p>
-                            <div class="tool-v5-features">
-                                <span><i class="fas fa-check"></i> تشفير عسكري</span>
-                                <span><i class="fas fa-check"></i> بصمة الإصبع</span>
-                            </div>
-                            <a href="#" class="tool-v5-btn">عرض التفاصيل التقنية <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                        <div class="tool-v5-visual"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="roadmap-v5-section" id="roadmap">
-            <div class="container">
-                <div class="section-v5-head">
-                    <span class="v5-subtitle">المستقبل الرقمي</span>
-                    <h2 class="v5-title">خارطة الطريق 2026</h2>
-                    <div class="v5-head-line"></div>
-                </div>
-                <div class="roadmap-v5-timeline">
-                    <div class="timeline-v5-item active">
-                        <div class="timeline-v5-marker">01</div>
-                        <div class="timeline-v5-content">
-                            <h4 class="timeline-v5-version">الإصدار المستقر V0.5</h4>
-                            <p>تثبيت محرك الأمان وتوسيع قاعدة بيانات أدوات التحميل المحلية.</p>
-                            <span class="timeline-v5-date">مارس 2026</span>
-                        </div>
-                    </div>
-                    <div class="timeline-v5-item">
-                        <div class="timeline-v5-marker">02</div>
-                        <div class="timeline-v5-content">
-                            <h4 class="timeline-v5-version">دمج الذكاء الاصطناعي (Offline)</h4>
-                            <p>إضافة نماذج لغوية تعمل محلياً للترجمة والتلخيص دون الحاجة لإنترنت.</p>
-                            <span class="timeline-v5-date">يونيو 2026</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="dev-v5-section" id="developer">
-            <div class="container">
-                <div class="dev-v5-card-ultra animate-v5">
-                    <div class="dev-v5-photo-wrap">
-                        <div class="dev-v5-photo-inner">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                    <div class="dev-v5-details">
-                        <h2 class="dev-v5-name">جمال ملوكي</h2>
-                        <h4 class="dev-v5-role">مطور أنظمة ومهندس خصوصية</h4>
-                        <p class="dev-v5-bio">شغوف ببناء برمجيات تحترم سيادة المستخدم على بياناته. مطور مشروع L'WESMOU OS من ولاية أدرار، الجزائر.</p>
-                        <div class="dev-v5-skills">
-                            <span class="skill-tag">Android Dev</span>
-                            <span class="skill-tag">CyberSecurity</span>
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">UI/UX</span>
-                        </div>
-                        <div class="dev-v5-social">
-                            <a href="https://t.me/MLk_JAMAL" class="social-btn"><i class="fab fa-telegram"></i></a>
-                            <a href="https://instagram.com/mellouki_djamal" class="social-btn"><i class="fab fa-instagram"></i></a>
-                            <a href="mailto:lwesmo.os@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-v5-footer">
-        <div class="container">
-            <div class="footer-v5-grid">
-                <div class="footer-v5-about">
-                    <div class="footer-v5-logo">L'WESMOU<span>OS</span></div>
-                    <p>مشروع برمي جزائري رائد يهدف لتمكين المستخدمين من أدواتهم الرقمية بأمان تام. الخصوصية ليست خياراً، بل حق أساسي.</p>
-                </div>
-                <div class="footer-v5-links">
-                    <h4 class="footer-v5-heading">روابط سريعة</h4>
-                    <ul class="footer-v5-list">
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#vision">الرؤية</a></li>
-                        <li><a href="#tools">الأدوات</a></li>
-                    </ul>
-                </div>
-                <div class="footer-v5-newsletter">
-                    <h4 class="footer-v5-heading">النشرة التقنية</h4>
-                    <div class="footer-v5-form">
-                        <input type="email" placeholder="بريدك الإلكتروني...">
-                        <button><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-v5-bottom">
-                <p>&copy; 2026 L'WESMOU OS. جميع الحقوق محفوظة للمطور جمال ملوكي.</p>
-                <div class="footer-v5-social-bottom">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div id="privacy-overlay" class="modal-system-overlay">
-        <div class="modal-system-box">
-            <div class="modal-system-header">
-                <h3>سياسة الخصوصية والأمان</h3>
-                <button id="privacyCloseBtn" class="close-modal-btn"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-system-body">
-                <p>نحن نلتزم بسياسة "الصفر بيانات". لا يتم رفع أي ملف أو معلومة لسيرفراتنا؛ جميع العمليات تتم محلياً على جهازك باستخدام تشفير AES-256.</p>
-            </div>
-            <div class="modal-system-footer">
-                <button id="privacyAcceptBtn" class="cta-primary-v5">فهمت وأوافق</button>
+            <div class="modal-body">
+                <p>هنا يتم وضع نص سياسة الخصوصية والاستخدام الخاص بك بشكل مفصل وواضح.</p>
+                <p>مثال: نحن نحترم خصوصيتك بالكامل. لا نقوم بجمع أي بيانات شخصية عبر هذا الموقع البسيط. جميع الروابط الخارجية تؤدي إلى منصات تواصل اجتماعي آمنة.</p>
+                <p>باستخدامك لهذا الموقع، أنت توافق على الشروط المذكورة هنا.</p>
             </div>
         </div>
     </div>
-
-    <button id="backToTop" class="scroll-top-v4"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>
