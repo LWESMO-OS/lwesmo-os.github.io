@@ -6,9 +6,17 @@
     <title>L'WESMOU OS | نظام تشغيل أندرويد المتطور</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        body { font-family: 'Tajawal', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1.5rem; }
+        .faq-answer { display: none; }
+        .faq-answer.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    </style>
 </head>
-<body class="bg-[#0a0a0a] text-white font-sans selection:bg-orange-500/30">
+<body class="selection:bg-orange-500/30">
 
     <!-- Header Section -->
     <header class="fixed top-0 w-full z-50 p-6 flex justify-between items-center glass border-b border-white/10">
@@ -31,14 +39,14 @@
             <li><a href="#الأدوات" class="flex items-center gap-4 text-lg hover:text-orange-500 transition-colors"><i data-lucide="box" class="w-6 h-6"></i> الأدوات</a></li>
             <li><a href="#تواصل-معنا" class="flex items-center gap-4 text-lg hover:text-orange-500 transition-colors"><i data-lucide="mail" class="w-6 h-6"></i> تواصل معنا</a></li>
             <li><a href="#الأسئلة-الشائعة" class="flex items-center gap-4 text-lg hover:text-orange-500 transition-colors"><i data-lucide="help-circle" class="w-6 h-6"></i> الأسئلة الشائعة</a></li>
+            <li><a href="#المطور" class="flex items-center gap-4 text-lg hover:text-orange-500 transition-colors"><i data-lucide="user" class="w-6 h-6"></i> المطور</a></li>
         </ul>
     </aside>
 
-    <!-- Main Content -->
     <main class="pt-32 p-6 md:p-12 space-y-32">
         
         <!-- Hero Section -->
-        <section id="hero" class="text-center">
+        <section id="hero" class="text-center animate-fade-in">
             <div class="mb-10 inline-block p-8 bg-zinc-900 rounded-3xl border border-orange-500/20 shadow-2xl shadow-orange-500/10">
                 <i data-lucide="cpu" class="w-24 h-24 text-orange-500"></i>
             </div>
@@ -77,110 +85,41 @@
         <section id="الأسئلة-الشائعة" class="space-y-12">
             <h3 class="text-5xl font-bold tracking-tighter">الأسئلة الشائعة</h3>
             <div class="space-y-4">
-                <!-- FAQ Item 1 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">1. ما هو L'WESMOU OS؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">هو نظام إنتاجية متكامل مصمم لأجهزة أندرويد، يركز على الخصوصية والكفاءة.</div>
-                </div>
-                <!-- FAQ Item 2 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">2. هل التطبيق مجاني؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، التطبيق متاح مجاناً، مع وجود إعلانات لدعم تطويره.</div>
-                </div>
-                <!-- FAQ Item 3 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">3. هل يحتوي التطبيق على إعلانات؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يحتوي التطبيق على إعلانات لدعم استمرارية التطوير وتوفير الميزات.</div>
-                </div>
-                <!-- FAQ Item 4 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">4. هل تؤثر الإعلانات على تجربة الاستخدام؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">لا، تم تصميم الإعلانات بعناية لتكون غير مزعجة ولا تؤثر على تجربة الاستخدام.</div>
-                </div>
-                <!-- FAQ Item 5 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">5. هل يحتاج التطبيق إلى إنترنت؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، بعض الأدوات تحتاج للإنترنت، بينما تعمل الأدوات الأساسية الأخرى دون الحاجة إليه.</div>
-                </div>
-                <!-- FAQ Item 6 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">6. هل تعمل جميع الأدوات بدون إنترنت؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">لا، بعض الأدوات المتقدمة تتطلب اتصالاً بالإنترنت، لكن الأدوات الأساسية تعمل محلياً.</div>
-                </div>
-                <!-- FAQ Item 7 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">7. هل بياناتي آمنة؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، خصوصيتك هي أولويتنا، حيث يتم تنفيذ معظم العمليات محلياً على جهازك.</div>
-                </div>
-                <!-- FAQ Item 8 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">8. كيف أقوم بتحميل الملفات؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">يمكنك تحميل الملفات بسهولة عبر أداة مدير التحميلات باستخدام الروابط أو البحث الذكي.</div>
-                </div>
-                <!-- FAQ Item 9 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">9. هل يدعم التطبيق ملفات PDF؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يمكنك تعديل، دمج، وترجمة ملفات PDF بكل سهولة.</div>
-                </div>
-                <!-- FAQ Item 10 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">10. هل يمكنني زيادة جودة الفيديوهات؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يوفر محرر الوسائط أدوات احترافية لرفع جودة الصور والفيديوهات.</div>
-                </div>
-                <!-- FAQ Item 11 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">11. كيف أضيف تذكيراً لمهامي؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">عبر أداة مدير المهام، يمكنك إضافة تذكيرات ذكية وتأجيل المهام.</div>
-                </div>
-                <!-- FAQ Item 12 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">12. أين تُحفظ الملفات الخاصة؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">تُحفظ في "الخزنة" المشفرة داخل أعماق النظام، بعيداً عن أي وصول خارجي.</div>
-                </div>
-                <!-- FAQ Item 13 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">13. هل التطبيق يدعم اللغة العربية؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، التطبيق يدعم اللغة العربية بالكامل لسهولة الاستخدام.</div>
-                </div>
-                <!-- FAQ Item 14 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">14. هل يمكنني إزالة العلامة المائية؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يوفر محرر الوسائط أدوات لإزالة العلامات المائية والضوضاء من الصور والفيديوهات.</div>
-                </div>
-                <!-- FAQ Item 15 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">15. هل التطبيق يستهلك البطارية؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">التطبيق مصمم ليكون خفيفاً جداً ولا يستهلك البطارية بشكل غير مبرر.</div>
-                </div>
-                <!-- FAQ Item 16 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">16. هل يمكنني تأجيل المهام؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يمكنك تأجيل المهام غير المحققة بمرونة عالية لتنظيم وقتك بشكل أفضل.</div>
-                </div>
-                <!-- FAQ Item 17 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">17. هل يمكنني فك قفل ملفات Word؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يتيح لك مستكشف الملفات قفل وفك قفل ملفات Word و Excel.</div>
-                </div>
-                <!-- FAQ Item 18 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">18. هل يدعم التطبيق فلاتر الصوت؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، يمكنك إضافة فلاتر احترافية للصوت عبر محرر الوسائط.</div>
-                </div>
-                <!-- FAQ Item 19 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">19. هل يتم تخزين الصور في السحابة؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">لا، يتم تخزين الصور والملفات محلياً على جهازك لضمان خصوصيتك.</div>
-                </div>
-                <!-- FAQ Item 20 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">20. كيف أتواصل مع المطور؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">يمكنك التواصل معنا عبر روابط التواصل الاجتماعي المتاحة في قسم المطور.</div>
-                </div>
-                <!-- FAQ Item 21 -->
-                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden">
-                    <button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">21. هل التطبيق متوافق مع جميع إصدارات أندرويد؟</button>
-                    <div class="faq-answer px-6 pb-6 text-zinc-400 hidden">نعم، تم تصميم التطبيق ليكون متوافقاً مع معظم إصدارات أندرويد الحديثة.</div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">1. ما هو L'WESMOU OS؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">هو نظام إنتاجية متكامل مصمم لأجهزة أندرويد، يركز على الخصوصية والكفاءة.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">2. هل التطبيق مجاني؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، التطبيق متاح مجاناً، مع وجود إعلانات لدعم تطويره.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">3. هل يحتوي التطبيق على إعلانات؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يحتوي التطبيق على إعلانات لدعم استمرارية التطوير وتوفير الميزات.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">4. هل تؤثر الإعلانات على تجربة الاستخدام؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">لا، تم تصميم الإعلانات بعناية لتكون غير مزعجة ولا تؤثر على تجربة الاستخدام.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">5. هل يحتاج التطبيق إلى إنترنت؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، بعض الأدوات تحتاج للإنترنت، بينما تعمل الأدوات الأساسية الأخرى دون الحاجة إليه.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">6. هل تعمل جميع الأدوات بدون إنترنت؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">لا، بعض الأدوات المتقدمة تتطلب اتصالاً بالإنترنت، لكن الأدوات الأساسية تعمل محلياً.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">7. هل بياناتي آمنة؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، خصوصيتك هي أولويتنا، حيث يتم تنفيذ معظم العمليات محلياً على جهازك.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">8. كيف أقوم بتحميل الملفات؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">يمكنك تحميل الملفات بسهولة عبر أداة مدير التحميلات باستخدام الروابط أو البحث الذكي.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">9. هل يدعم التطبيق ملفات PDF؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يمكنك تعديل، دمج، وترجمة ملفات PDF بكل سهولة.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">10. هل يمكنني زيادة جودة الفيديوهات؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يوفر محرر الوسائط أدوات احترافية لرفع جودة الصور والفيديوهات.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">11. كيف أضيف تذكيراً لمهامي؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">عبر أداة مدير المهام، يمكنك إضافة تذكيرات ذكية وتأجيل المهام.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">12. أين تُحفظ الملفات الخاصة؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">تُحفظ في "الخزنة" المشفرة داخل أعماق النظام، بعيداً عن أي وصول خارجي.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">13. هل التطبيق يدعم اللغة العربية؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، التطبيق يدعم اللغة العربية بالكامل لسهولة الاستخدام.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">14. هل يمكنني إزالة العلامة المائية؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يوفر محرر الوسائط أدوات لإزالة العلامات المائية والضوضاء من الصور والفيديوهات.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">15. هل التطبيق يستهلك البطارية؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">التطبيق مصمم ليكون خفيفاً جداً ولا يستهلك البطارية بشكل غير مبرر.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">16. هل يمكنني تأجيل المهام؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يمكنك تأجيل المهام غير المحققة بمرونة عالية لتنظيم وقتك بشكل أفضل.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">17. هل يمكنني فك قفل ملفات Word؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يتيح لك مستكشف الملفات قفل وفك قفل ملفات Word و Excel.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">18. هل يدعم التطبيق فلاتر الصوت؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، يمكنك إضافة فلاتر احترافية للصوت عبر محرر الوسائط.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">19. هل يتم تخزين الصور في السحابة؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">لا، يتم تخزين الصور والملفات محلياً على جهازك لضمان خصوصيتك.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">20. كيف أتواصل مع المطور؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">يمكنك التواصل معنا عبر روابط التواصل الاجتماعي المتاحة في قسم المطور.</div></div>
+                <div class="bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden"><button class="faq-toggle w-full p-6 text-right font-semibold text-lg hover:bg-white/5 transition-colors">21. هل التطبيق متوافق مع جميع إصدارات أندرويد؟</button><div class="faq-answer px-6 pb-6 text-zinc-400">نعم، تم تصميم التطبيق ليكون متوافقاً مع معظم إصدارات أندرويد الحديثة.</div></div>
+            </div>
+        </section>
+
+        <!-- Developer Section (Explicitly Written) -->
+        <section id="المطور" class="space-y-12">
+            <h3 class="text-5xl font-bold tracking-tighter">المطور</h3>
+            <div class="bg-zinc-900/50 p-12 rounded-3xl border border-white/5 shadow-2xl">
+                <h4 class="font-bold text-4xl text-white">ملوكي جمال</h4>
+                <p class="text-orange-500 mt-2 text-xl font-medium">مطور L'WESMOU OS</p>
+                <div class="flex gap-8 mt-10">
+                    <a href="https://t.me/MLk_JAMAL" target="_blank" class="hover:text-orange-500 transition-colors"><i data-lucide="send" class="w-8 h-8"></i></a>
+                    <a href="https://www.tiktok.com/@mellouki_djamal" target="_blank" class="hover:text-orange-500 transition-colors"><i data-lucide="music" class="w-8 h-8"></i></a>
+                    <a href="https://instagram.com/mellouki_djamal" target="_blank" class="hover:text-orange-500 transition-colors"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                    <a href="https://wa.me/213776243941" target="_blank" class="hover:text-orange-500 transition-colors"><i data-lucide="message-circle" class="w-8 h-8"></i></a>
                 </div>
             </div>
         </section>
@@ -209,7 +148,44 @@
         <i data-lucide="arrow-up" class="w-6 h-6"></i>
     </button>
 
-    <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
+    <!-- Explicit JavaScript logic -->
+    <script>
+        // FAQ Toggle logic
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                button.nextElementSibling.classList.toggle('hidden');
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        
+        const privacyPolicy = ["1. جمع البيانات: نلتزم بجمع الحد الأدنى من البيانات الضرورية فقط لضمان عمل التطبيق.", "2. معالجة البيانات: تتم معالجة معظم البيانات محلياً على جهاز المستخدم لضمان الخصوصية.", "3. مشاركة البيانات: لا نقوم ببيع أو مشاركة بياناتك الشخصية مع أطراف ثالثة.", "4. أمن البيانات: نستخدم تقنيات تشفير متقدمة لحماية ملفاتك في 'الخزنة'.", "5. حقوق المستخدم: يحق لك الوصول إلى بياناتك أو طلب حذفها في أي وقت.", "6. الإعلانات: نستخدم إعلانات غير مزعجة لدعم التطوير، ولا نجمع بيانات تتبع حساسة.", "7. روابط الطرف الثالث: لا نتحمل مسؤولية محتوى المواقع الخارجية التي قد تظهر في الإعلانات.", "8. خصوصية الأطفال: التطبيق غير مخصص للأطفال دون سن 13 عاماً.", "9. تحديثات السياسة: قد نقوم بتحديث هذه السياسة، وسيتم إخطارك بأي تغييرات جوهرية.", "10. اتصل بنا: يمكنك التواصل معنا عبر البريد الإلكتروني لأي استفسار."];
+        const termsOfUse = ["1. قبول الشروط: باستخدامك للتطبيق، أنت توافق على هذه الشروط بالكامل.", "2. الترخيص: نمنحك ترخيصاً محدوداً وغير حصري لاستخدام التطبيق.", "3. سلوك المستخدم: يمنع استخدام التطبيق لأي أغراض غير قانونية أو ضارة.", "4. الملكية الفكرية: جميع الحقوق الفكرية للتطبيق محفوظة للمطور.", "5. إخلاء المسؤولية: التطبيق مقدم 'كما هو' دون أي ضمانات صريحة أو ضمنية.", "6. تحديد المسؤولية: لا نتحمل مسؤولية أي أضرار ناتجة عن استخدام التطبيق.", "7. إنهاء الخدمة: نحتفظ بالحق في إنهاء وصولك للتطبيق في حال مخالفة الشروط.", "8. القانون الحاكم: تخضع هذه الشروط للقوانين المعمول بها في بلد المطور.", "9. تعديل الشروط: يحق لنا تعديل هذه الشروط، واستمرارك في استخدام التطبيق يعني موافقتك.", "10. معلومات الاتصال: لأي استفسارات قانونية، يرجى التواصل معنا عبر البريد الإلكتروني."];
+
+        document.getElementById('openPrivacy').addEventListener('click', () => {
+            modalTitle.innerText = 'سياسة الخصوصية';
+            modalContent.innerHTML = privacyPolicy.map(item => `<p>${item}</p>`).join('');
+            modal.classList.remove('hidden');
+        });
+        document.getElementById('openTerms').addEventListener('click', () => {
+            modalTitle.innerText = 'شروط الاستخدام';
+            modalContent.innerHTML = termsOfUse.map(item => `<p>${item}</p>`).join('');
+            modal.classList.remove('hidden');
+        });
+        document.getElementById('closeModal').addEventListener('click', () => modal.classList.add('hidden'));
+
+        // Sidebar & ScrollTop
+        document.getElementById('sidebarToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('hidden'));
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTop');
+            window.scrollY > 300 ? btn.classList.remove('hidden') : btn.classList.add('hidden');
+        });
+        document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+        
+        lucide.createIcons();
+    </script>
 </body>
 </html>
