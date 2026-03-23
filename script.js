@@ -1,219 +1,443 @@
-/* -----------------------------------------------------------
-   L'WESMOU OS - INTERACTIVE SCRIPT (V0.4)
-   Author: Jamal Mellouki
-   Functionality: UI/UX Enhancements & Logic
-   ----------------------------------------------------------- */
+const LWESMOU_CORE = (function() {
+    'use strict';
 
-/**
- * 1. تهيئة المتغيرات العامة (Global Initialization)
- * ننتظر تحميل كامل عناصر الصفحة قبل البدء لضمان عدم وجود أخطاء.
- */
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // تعريف عناصر واجهة المستخدم الرئيسية
-    const header = document.getElementById('main-header');
-    const sidebar = document.getElementById('sidebar');
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const closeSidebarBtn = document.getElementById('close-sidebar');
-    const backToTopBtn = document.getElementById('back-to-top');
-    const privacyTrigger = document.getElementById('privacy-trigger');
-    const privacyModal = document.getElementById('privacy-modal');
-    const closeModalBtn = document.getElementById('close-modal');
-    
-    /**
-     * 2. نظام القائمة الجانبية (Sidebar Logic)
-     * إدارة فتح وإغلاق القائمة في الهواتف.
-     */
-    const toggleSidebar = () => {
-        sidebar.classList.toggle('active');
-        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+    const UI_STATE = {
+        isSidebarOpen: false,
+        isModalOpen: false,
+        lastScrollPos: 0,
+        isLoading: true,
+        activeTheme: 'matte-black',
+        particlesEnabled: true
     };
 
-    if (menuBtn) menuBtn.addEventListener('click', toggleSidebar);
-    if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', toggleSidebar);
+    const DOM_ELEMENTS = {
+        body: document.body,
+        header: document.getElementById('site-header'),
+        preloader: document.getElementById('preloader'),
+        loadBar: document.getElementById('loadBar'),
+        sidebar: document.getElementById('main-sidebar'),
+        sidebarToggle: document.getElementById('sidebarToggle'),
+        sidebarClose: document.getElementById('sidebarCloseBtn'),
+        neonCanvas: document.getElementById('neonCanvas'),
+        privacyModal: document.getElementById('privacy-overlay'),
+        privacyOpen: document.getElementById('privacyOpenBtn'),
+        privacyClose: document.getElementById('privacyCloseBtn'),
+        privacyAccept: document.getElementById('privacyAcceptBtn'),
+        backToTop: document.getElementById('backToTop'),
+        faqItems: document.querySelectorAll('.faq-item-v3')
+    };
 
-    // إغلاق القائمة عند الضغط على الروابط
-    const sidebarLinks = document.querySelectorAll('.sidebar-links a');
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (sidebar.classList.contains('active')) toggleSidebar();
-        });
-    });
-
-    /**
-     * 3. منطق التمرير السلس وتغيير شكل الهيدر (Scroll Logic)
-     */
-    window.addEventListener('scroll', () => {
-        // تغيير شفافية الهيدر عند التمرير
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(8, 8, 8, 0.98)';
-            header.style.padding = '10px 5%';
-            header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-        } else {
-            header.style.background = 'rgba(8, 8, 8, 0.95)';
-            header.style.padding = '15px 5%';
-            header.style.boxShadow = 'none';
+    class Particle {
+        constructor(canvasWidth, canvasHeight) {
+            this.canvasWidth = canvasWidth;
+            this.canvasHeight = canvasHeight;
+            this.init();
         }
 
-        // إظهار وإخفاء زر العودة للأعلى
-        if (window.scrollY > 500) {
-            backToTopBtn.style.display = 'flex';
-            backToTopBtn.style.opacity = '1';
-        } else {
-            backToTopBtn.style.opacity = '0';
-            setTimeout(() => {
-                if(backToTopBtn.style.opacity === '0') backToTopBtn.style.display = 'none';
-            }, 300);
+        init() {
+            this.x = Math.random() * this.canvasWidth;
+            this.y = Math.random() * this.canvasHeight;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 1.5 - 0.75;
+            this.speedY = Math.random() * 1.5 - 0.75;
+            this.color = '#ff6600';
+            this.opacity = Math.random() * 0.5 + 0.1;
         }
-    });
 
-    /**
-     * 4. نظام الأسئلة الشائعة (Accordion FAQ)
-     * إدارة فتح الأجوبة وإغلاق الأخرى تلقائياً.
-     */
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const icon = question.querySelector('i');
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
 
-            // إغلاق أي سؤال آخر مفتوح حالياً
-            faqQuestions.forEach(otherQ => {
-                if (otherQ !== question) {
-                    otherQ.nextElementSibling.style.maxHeight = null;
-                    otherQ.querySelector('i').style.transform = 'rotate(0deg)';
+            if (this.x > this.canvasWidth) this.x = 0;
+            else if (this.x < 0) this.x = this.canvasWidth;
+            
+            if (this.y > this.canvasHeight) this.y = 0;
+            else if (this.y < 0) this.y = this.canvasHeight;
+        }
+
+        draw(ctx) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 102, 0, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    class NeonBackground {
+        constructor(canvasId) {
+            this.canvas = canvasId;
+            if (!this.canvas) return;
+            this.ctx = this.canvas.getContext('2d');
+            this.particles = [];
+            this.numberOfParticles = 80;
+            this.resize();
+            this.createParticles();
+            this.animate();
+            window.addEventListener('resize', () => this.resize());
+        }
+
+        resize() {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+        }
+
+        createParticles() {
+            for (let i = 0; i < this.numberOfParticles; i++) {
+                this.particles.push(new Particle(this.canvas.width, this.canvas.height));
+            }
+        }
+
+        animate() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.particles.forEach(particle => {
+                particle.update();
+                particle.draw(this.ctx);
+            });
+            this.connectParticles();
+            requestAnimationFrame(() => this.animate());
+        }
+
+        connectParticles() {
+            const maxDistance = 150;
+            for (let a = 0; a < this.particles.length; a++) {
+                for (let b = a; b < this.particles.length; b++) {
+                    const dx = this.particles[a].x - this.particles[b].x;
+                    const dy = this.particles[a].y - this.particles[b].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        const opacity = 1 - (distance / maxDistance);
+                        this.ctx.strokeStyle = `rgba(255, 102, 0, ${opacity * 0.2})`;
+                        this.ctx.lineWidth = 1;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(this.particles[a].x, this.particles[a].y);
+                        this.ctx.lineTo(this.particles[b].x, this.particles[b].y);
+                        this.ctx.stroke();
+                    }
+                }
+            }
+        }
+    }
+
+    const AnimationEngine = {
+        initLoader() {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    this.hideLoader();
+                }
+                if (DOM_ELEMENTS.loadBar) {
+                    DOM_ELEMENTS.loadBar.style.width = progress + '%';
+                }
+            }, 150);
+        },
+
+        hideLoader() {
+            if (DOM_ELEMENTS.preloader) {
+                DOM_ELEMENTS.preloader.style.opacity = '0';
+                setTimeout(() => {
+                    DOM_ELEMENTS.preloader.style.display = 'none';
+                    UI_STATE.isLoading = false;
+                    this.revealContent();
+                }, 600);
+            }
+        },
+
+        revealContent() {
+            const revealItems = document.querySelectorAll('.animate-pop, .vision-card-premium, .tool-item-large');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+    };
+
+    const NavigationManager = {
+        toggleSidebar() {
+            UI_STATE.isSidebarOpen = !UI_STATE.isSidebarOpen;
+            if (UI_STATE.isSidebarOpen) {
+                DOM_ELEMENTS.sidebar.classList.add('sidebar-open');
+                DOM_ELEMENTS.sidebar.classList.remove('sidebar-closed');
+                DOM_ELEMENTS.body.style.overflow = 'hidden';
+            } else {
+                DOM_ELEMENTS.sidebar.classList.remove('sidebar-open');
+                DOM_ELEMENTS.sidebar.classList.add('sidebar-closed');
+                DOM_ELEMENTS.body.style.overflow = 'auto';
+            }
+        },
+
+        handleScroll() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                DOM_ELEMENTS.header.classList.add('header-scrolled');
+                DOM_ELEMENTS.backToTop.classList.add('show');
+            } else {
+                DOM_ELEMENTS.header.classList.remove('header-scrolled');
+                DOM_ELEMENTS.backToTop.classList.remove('show');
+            }
+
+            if (currentScroll > UI_STATE.lastScrollPos && currentScroll > 200) {
+                DOM_ELEMENTS.header.style.transform = 'translateY(-100%)';
+            } else {
+                DOM_ELEMENTS.header.style.transform = 'translateY(0)';
+            }
+            
+            UI_STATE.lastScrollPos = currentScroll;
+            this.updateActiveLink();
+        },
+
+        updateActiveLink() {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let currentActive = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    currentActive = section.getAttribute('id');
                 }
             });
 
-            // تبديل حالة السؤال الحالي
-            if (answer.style.maxHeight) {
-                answer.style.maxHeight = null;
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-                icon.style.transform = 'rotate(180deg)';
-            }
-        });
-    });
-
-    /**
-     * 5. نظام النافذة المنبثقة للخصوصية (Privacy Modal)
-     */
-    const openModal = (e) => {
-        e.preventDefault();
-        privacyModal.style.display = 'flex';
-        setTimeout(() => { privacyModal.style.opacity = '1'; }, 10);
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeModal = () => {
-        privacyModal.style.opacity = '0';
-        setTimeout(() => {
-            privacyModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 300);
-    };
-
-    if (privacyTrigger) privacyTrigger.addEventListener('click', openModal);
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-
-    // إغلاق النافذة عند الضغط خارجها
-    window.addEventListener('click', (e) => {
-        if (e.target === privacyModal) closeModal();
-    });
-
-    /**
-     * 6. تأثيرات الأنيميشن عند الظهور (Intersection Observer)
-     * لجعل العناصر تظهر بسلاسة عند التمرير إليها.
-     */
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-active');
-                observer.unobserve(entry.target); // تشغيل الأنيميشن مرة واحدة فقط
-            }
-        });
-    }, observerOptions);
-
-    const revealElements = document.querySelectorAll('.feature-card, .tool-item, .roadmap-step, .dev-card');
-    revealElements.forEach(el => {
-        el.classList.add('reveal-hidden');
-        observer.observe(el);
-    });
-
-    /**
-     * 7. منطق زر العودة للأعلى (Back to Top)
-     */
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            navItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(currentActive)) {
+                    link.classList.add('active');
+                }
             });
-        });
-    }
+        }
+    };
+       const ModalManager = {
+        openPrivacyModal(e) {
+            if (e) e.preventDefault();
+            UI_STATE.isModalOpen = true;
+            DOM_ELEMENTS.privacyModal.style.display = 'flex';
+            DOM_ELEMENTS.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                DOM_ELEMENTS.privacyModal.classList.add('modal-visible');
+            }, 10);
+        },
 
-    /**
-     * 8. معالجة روابط التواصل الاجتماعي (Social Media Log)
-     * وظيفة تضمن تسجيل النقرات لأغراض التحليل (اختياري).
-     */
-    const socialLinks = document.querySelectorAll('.social-links a');
-    socialLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const platform = e.currentTarget.getAttribute('title');
-            console.log(`L'WESMOU OS: تم توجيه المستخدم إلى ${platform}`);
-        });
-    });
+        closePrivacyModal() {
+            UI_STATE.isModalOpen = false;
+            DOM_ELEMENTS.privacyModal.classList.remove('modal-visible');
+            setTimeout(() => {
+                DOM_ELEMENTS.privacyModal.style.display = 'none';
+                if (!UI_STATE.isSidebarOpen) {
+                    DOM_ELEMENTS.body.style.overflow = 'auto';
+                }
+            }, 400);
+        },
 
-    /**
-     * 9. وظيفة إضافية: محاكاة التحميل (Download Simulation)
-     * تظهر رسالة للمستخدم عند الضغط على زر التحميل.
-     */
-    const mainDownloadBtn = document.querySelector('.main-download-btn');
-    if (mainDownloadBtn) {
-        mainDownloadBtn.addEventListener('click', () => {
-            // يمكن إضافة Logic إضافي هنا مثل إظهار Toast Notification
-            console.log("جارٍ تحويلك إلى قناة تليجرام لتحميل L'WESMOU OS...");
-        });
-    }
-
-    /**
-     * 10. تحسينات الأداء (Performance Optimization)
-     * إلغاء تفعيل الأنيميشن المعقدة إذا كان المستخدم يفضل تقليل الحركة.
-     */
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReducedMotion.matches) {
-        document.querySelectorAll('.animate-text').forEach(el => {
-            el.style.animation = 'none';
-        });
-    }
-
-    /**
-     * 11. وظيفة برمجية دقيقة لحساب الأبعاد الديناميكية
-     * تضمن بقاء الموقع متناسقاً في مختلف الشاشات.
-     */
-    const adjustLayout = () => {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        handleOverlayClick(e) {
+            if (e.target === DOM_ELEMENTS.privacyModal) {
+                this.closePrivacyModal();
+            }
+        }
     };
 
-    window.addEventListener('resize', adjustLayout);
-    adjustLayout();
+    const InteractionEngine = {
+        initFaq() {
+            DOM_ELEMENTS.faqItems.forEach(item => {
+                const header = item.querySelector('.faq-header-v3');
+                header.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('faq-open');
+                    this.closeAllFaq();
+                    if (!isOpen) {
+                        item.classList.add('faq-open');
+                        const icon = item.querySelector('i');
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        },
 
-    /**
-     * 12. رسالة الترحيب في الـ Console
-     * بصمتك كمطور في المتصفح.
-     */
-    console.log("%c L'WESMOU OS %c Developed by Jamal Mellouki %c", 
-                "color: #fff; background: #ff6600; padding:5px 10px; border-radius: 5px; font-weight: bold;", 
-                "color: #ff6600; font-weight: bold;", 
-                "color: #fff;");
+        closeAllFaq() {
+            DOM_ELEMENTS.faqItems.forEach(item => {
+                item.classList.remove('faq-open');
+                const icon = item.querySelector('i');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            });
+        },
 
-});
+        initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        if (UI_STATE.isSidebarOpen) {
+                            NavigationManager.toggleSidebar();
+                        }
 
-// --- نهاية الملف - تم صياغة الأكواد بدقة كاملة لضمان الوظائف المذكورة ---
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        },
+
+        initBackToTop() {
+            DOM_ELEMENTS.backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    };
+
+    const ToolModule = {
+        initToolHover() {
+            const tools = document.querySelectorAll('.tool-item-large');
+            tools.forEach(tool => {
+                tool.addEventListener('mouseenter', () => {
+                    tool.querySelector('.tool-icon-circle').classList.add('tool-pulse');
+                });
+                tool.addEventListener('mouseleave', () => {
+                    tool.querySelector('.tool-icon-circle').classList.remove('tool-pulse');
+                });
+            });
+        },
+
+        updateStatsDynamically() {
+            const stats = document.querySelectorAll('.stat-num');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animateNumber(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 1 });
+
+            stats.forEach(stat => observer.observe(stat));
+        },
+
+        animateNumber(element) {
+            const target = parseInt(element.innerText.replace('+', '').replace('%', ''));
+            const suffix = element.innerText.includes('+') ? '+' : (element.innerText.includes('%') ? '%' : '');
+            let count = 0;
+            const speed = 2000 / target;
+
+            const updateCount = () => {
+                if (count < target) {
+                    count++;
+                    element.innerText = count + suffix;
+                    setTimeout(updateCount, speed);
+                } else {
+                    element.innerText = target + suffix;
+                }
+            };
+            updateCount();
+        }
+    };
+
+    const FormHandler = {
+        initNewsletter() {
+            const form = document.querySelector('.footer-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = form.querySelector('input');
+                    if (this.validateEmail(input.value)) {
+                        this.showFeedback(form, 'تم الاشتراك بنجاح!', 'success');
+                        input.value = '';
+                    } else {
+                        this.showFeedback(form, 'البريد غير صالح', 'error');
+                    }
+                });
+            }
+        },
+
+        validateEmail(email) {
+            return String(email)
+                .toLowerCase()
+                .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        },
+
+        showFeedback(parent, message, type) {
+            const feedback = document.createElement('div');
+            feedback.className = `form-feedback ${type}`;
+            feedback.innerText = message;
+            parent.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 3000);
+        }
+    };
+
+    const CoreInitializer = {
+        bindEvents() {
+            DOM_ELEMENTS.sidebarToggle.addEventListener('click', () => NavigationManager.toggleSidebar());
+            DOM_ELEMENTS.sidebarClose.addEventListener('click', () => NavigationManager.toggleSidebar());
+            window.addEventListener('scroll', () => NavigationManager.handleScroll());
+            
+            if (DOM_ELEMENTS.privacyOpen) {
+                DOM_ELEMENTS.privacyOpen.addEventListener('click', (e) => ModalManager.openPrivacyModal(e));
+            }
+            if (DOM_ELEMENTS.privacyClose) {
+                DOM_ELEMENTS.privacyClose.addEventListener('click', () => ModalManager.closePrivacyModal());
+            }
+            if (DOM_ELEMENTS.privacyAccept) {
+                DOM_ELEMENTS.privacyAccept.addEventListener('click', () => ModalManager.closePrivacyModal());
+            }
+            if (DOM_ELEMENTS.privacyModal) {
+                DOM_ELEMENTS.privacyModal.addEventListener('click', (e) => ModalManager.handleOverlayClick(e));
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (UI_STATE.isSidebarOpen) NavigationManager.toggleSidebar();
+                    if (UI_STATE.isModalOpen) ModalManager.closePrivacyModal();
+                }
+            });
+        },
+
+        initAll() {
+            AnimationEngine.initLoader();
+            this.bindEvents();
+            InteractionEngine.initFaq();
+            InteractionEngine.initSmoothScroll();
+            InteractionEngine.initBackToTop();
+            ToolModule.initToolHover();
+            ToolModule.updateStatsDynamically();
+            FormHandler.initNewsletter();
+            
+            if (DOM_ELEMENTS.neonCanvas) {
+                new NeonBackground(DOM_ELEMENTS.neonCanvas);
+            }
+
+            console.log("L'WESMOU OS Core v0.4 Loaded Successfully.");
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        CoreInitializer.initAll();
+    });
+
+    return {
+        toggleSidebar: NavigationManager.toggleSidebar,
+        openPrivacy: ModalManager.openPrivacyModal
+    };
+
+})();
+                   
