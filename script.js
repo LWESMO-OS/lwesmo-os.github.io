@@ -440,4 +440,33 @@ const LWESMOU_CORE = (function() {
     };
 
 })();
-                   
+.footer-v4-list, .footer-v4-list ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-v4-list li a {
+    color: var(--text-gray) !important;
+    display: block;
+    padding: 5px 0;
+}
+
+#backToTop {
+    left: 20px !important;
+    right: auto !important;
+    bottom: 25px !important;
+}
+
+@media (max-width: 768px) {
+    .footer-v4-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        text-align: center;
+    }
+    .footer-v4-col {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+}
