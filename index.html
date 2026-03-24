@@ -35,14 +35,10 @@
 
     <header id="site-header">
         <div class="container-wide nav-container">
-            <div class="brand-logo">
-                <a href="#home" class="logo-anchor">
-                    <div class="brand-icon-box pulse-orange"></div>
-                    <div class="logo-text-group">
-                        <span class="brand-name">L'WESMOU</span>
-                        <span class="brand-suffix">OS</span>
-                    </div>
-                </a>
+            <div class="nav-trigger" id="sidebarToggle">
+                <span class="bar-line"></span>
+                <span class="bar-line"></span>
+                <span class="bar-line"></span>
             </div>
             <nav class="desktop-nav">
                 <ul class="nav-links">
@@ -56,10 +52,14 @@
                     <li><a href="#developer" class="nav-item-btn">المطور</a></li>
                 </ul>
             </nav>
-            <div class="nav-trigger" id="sidebarToggle">
-                <span class="bar-line"></span>
-                <span class="bar-line"></span>
-                <span class="bar-line"></span>
+            <div class="brand-logo">
+                <a href="#home" class="logo-anchor">
+                    <div class="logo-text-group">
+                        <span class="brand-name">L'WESMOU</span>
+                        <span class="brand-suffix">OS</span>
+                    </div>
+                    <div class="brand-icon-box pulse-orange"></div>
+                </a>
             </div>
         </div>
     </header>
@@ -681,4 +681,195 @@
             <div class="modal-system-footer">
                 <button class="btn-main-glow" id="privacyAcceptBtn">أوافق وأفهم الشروط</button>
             </div>
-      
+              </div>
+    </div>
+
+    <!-- FAB Scroll Top -->
+    <div class="fab-scroll-top" id="fabTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+    // =============================================
+    // PRELOADER - يختفي بسرعة بعد تحميل الصفحة
+    // =============================================
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        const loadBar = document.getElementById('loadBar');
+        
+        // تحريك شريط التحميل بسرعة
+        let progress = 0;
+        const interval = setInterval(function() {
+            progress += 10;
+            if (loadBar) loadBar.style.width = progress + '%';
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(function() {
+                    preloader.style.opacity = '0';
+                    preloader.style.transition = 'opacity 0.4s ease';
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 400);
+                }, 200);
+            }
+        }, 30);
+    });
+
+    // احتياطي: إذا تأخر الـ load event، أخفِ الـ preloader بعد 2 ثانية على الأكثر
+    setTimeout(function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader && preloader.style.display !== 'none') {
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 0.4s ease';
+            setTimeout(function() { preloader.style.display = 'none'; }, 400);
+        }
+    }, 2000);
+
+    // =============================================
+    // SIDEBAR
+    // =============================================
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+    const sidebar = document.getElementById('main-sidebar');
+
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.add('sidebar-open');
+        });
+    }
+    if (sidebarCloseBtn) {
+        sidebarCloseBtn.addEventListener('click', function() {
+            sidebar.classList.remove('sidebar-open');
+        });
+    }
+
+    // إغلاق السايدبار عند الضغط خارجه
+    document.addEventListener('click', function(e) {
+        if (sidebar && sidebar.classList.contains('sidebar-open')) {
+            if (!sidebar.contains(e.target) && e.target !== sidebarToggle && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('sidebar-open');
+            }
+        }
+    });
+
+    // إغلاق السايدبار عند النقر على رابط
+    document.querySelectorAll('.sidebar-nav-list a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            sidebar.classList.remove('sidebar-open');
+        });
+    });
+
+    // =============================================
+    // FAB SCROLL TOP
+    // =============================================
+    const fabTop = document.getElementById('fabTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            fabTop.classList.add('show');
+        } else {
+            fabTop.classList.remove('show');
+        }
+    });
+    if (fabTop) {
+        fabTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // =============================================
+    // PRIVACY MODAL
+    // =============================================
+    const privacyOpenBtn = document.getElementById('privacyOpenBtn');
+    const privacyCloseBtn = document.getElementById('privacyCloseBtn');
+    const privacyAcceptBtn = document.getElementById('privacyAcceptBtn');
+    const privacyOverlay = document.getElementById('privacy-overlay');
+
+    if (privacyOpenBtn) {
+        privacyOpenBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            privacyOverlay.style.display = 'flex';
+        });
+    }
+    function closePrivacy() {
+        if (privacyOverlay) privacyOverlay.style.display = 'none';
+    }
+    if (privacyCloseBtn) privacyCloseBtn.addEventListener('click', closePrivacy);
+    if (privacyAcceptBtn) privacyAcceptBtn.addEventListener('click', closePrivacy);
+    if (privacyOverlay) {
+        privacyOverlay.addEventListener('click', function(e) {
+            if (e.target === privacyOverlay) closePrivacy();
+        });
+    }
+
+    // =============================================
+    // FAQ ACCORDION
+    // =============================================
+    document.querySelectorAll('.faq-header-v3').forEach(function(header) {
+        header.addEventListener('click', function() {
+            const item = this.closest('.faq-item-v3');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item-v3').forEach(function(i) { i.classList.remove('open'); });
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+
+    // =============================================
+    // ACTIVE NAV ON SCROLL
+    // =============================================
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(function(section) {
+            if (window.scrollY >= section.offsetTop - 120) {
+                current = section.getAttribute('id');
+            }
+        });
+        document.querySelectorAll('.nav-item').forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // =============================================
+    // CANVAS BACKGROUND (اختياري - نقاط متحركة)
+    // =============================================
+    const canvas = document.getElementById('neonCanvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        const dots = [];
+        for (let i = 0; i < 60; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.5 + 0.5,
+                dx: (Math.random() - 0.5) * 0.4,
+                dy: (Math.random() - 0.5) * 0.4
+            });
+        }
+        function drawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dots.forEach(function(d) {
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,102,0,0.4)';
+                ctx.fill();
+                d.x += d.dx;
+                d.y += d.dy;
+                if (d.x < 0 || d.x > canvas.width) d.dx *= -1;
+                if (d.y < 0 || d.y > canvas.height) d.dy *= -1;
+            });
+            requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+        window.addEventListener('resize', function() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        });
+    }
+    </script>
+</body>
+</html>
