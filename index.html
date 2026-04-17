@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>وسمو | النظام البيئي الرقمي الكامل</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== CURSOR ===== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <div class="logo-icon">W</div>
+      <span>وسمو</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features">المزايا</a>
+      <a href="#apps">التطبيقات</a>
+      <a href="#download">تحميل</a>
+    </div>
+    <a href="#download" class="nav-cta">احصل عليه الآن</a>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-lines"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        النظام البيئي الرقمي الأول عربياً
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">وسمو</span>
+        <span class="title-sub">اللانشر الذي يُعيد تعريف</span>
+        <span class="title-accent">تجربة أندرويد</span>
+      </h1>
+      <p class="hero-desc">
+        لانشر متكامل بمستوى Nova Launcher مع جزيرة ديناميكية ذكية <strong>Neon Island</strong>
+        و٩ تطبيقات احترافية مدمجة — كل شيء محلياً، بدون اشتراك.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          تحميل التطبيق
+        </a>
+        <a href="#apps" class="btn-secondary">
+          استكشف التطبيقات
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">تطبيق مدمج</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">∞</span><span class="stat-label">تخصيص</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">محلي وآمن</span></div>
+      </div>
+    </div>
+
+    <div class="hero-phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="neon-island">
+            <div class="island-dot"></div>
+            <div class="island-content">
+              <span>Neon Island</span>
+              <div class="island-wave"></div>
+            </div>
+          </div>
+          <div class="phone-wallpaper">
+            <div class="app-grid">
+              <div class="app-icon-ph" data-color="#00f5ff">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h16v3H4zm0 5.5h16v3H4zm0 5.5h16v3H4z"/></svg>
+              </div>
+              <div class="app-icon-ph" data-color="#ff6b35">
+                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>
+              </div>
+              <div class="app-icon-ph" data-color="#a855f7">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+              </div>
+              <div class="app-icon-ph" data-color="#10b981">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+              </div>
+              <div class="app-icon-ph" data-color="#f59e0b">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+              </div>
+              <div class="app-icon-ph" data-color="#ef4444">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-glow"></div>
+    </div>
+  </section>
+
+  <!-- ===== NEON ISLAND ===== -->
+  <section class="neon-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">الجزيرة الديناميكية</div>
+        <h2>Neon Island</h2>
+        <p>تجاوز جزيرة أبل — تجربة تفاعلية حية مرتبطة بكل تطبيقاتك</p>
+      </div>
+      <div class="neon-features">
+        <div class="neon-card">
+          <div class="neon-icon">⚡</div>
+          <h3>تفاعل فوري</h3>
+          <p>تعرض الإشعارات والمعلومات الحية مباشرة في الجزيرة</p>
+        </div>
+        <div class="neon-card">
+          <div class="neon-icon">🔗</div>
+          <h3>مرتبطة بكل شيء</h3>
+          <p>متكاملة مع جميع تطبيقات وسمو التسعة</p>
+        </div>
+        <div class="neon-card">
+          <div class="neon-icon">🎨</div>
+          <h3>قابلة للتخصيص</h3>
+          <p>اختر ما تعرضه، كيف تتحرك، وأسلوب ظهورها</p>
+        </div>
+        <div class="neon-card">
+          <div class="neon-icon">🌊</div>
+          <h3>انتقالات سلسة</h3>
+          <p>حركات متميزة تجعل كل تفاعل لحظة جمالية</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAUNCHER ===== -->
+  <section class="launcher-section">
+    <div class="container">
+      <div class="launcher-content">
+        <div class="launcher-text">
+          <div class="section-tag">اللانشر الرئيسي</div>
+          <h2>Wesmo Launcher</h2>
+          <p>لانشر يضاهي Nova Launcher في المرونة والتخصيص، مع واجهة عربية كاملة وأداء لا مثيل له.</p>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> تخصيص كامل للأيقونات، الشبكة، والخلفيات</li>
+            <li><span class="check">✓</span> إيماءات متقدمة لكل الإجراءات</li>
+            <li><span class="check">✓</span> دعم الثيمات والحزم الخارجية</li>
+            <li><span class="check">✓</span> أداء خفيف يستهلك موارد أقل</li>
+            <li><span class="check">✓</span> نسخ احتياطي واستعادة الإعدادات</li>
+            <li><span class="check">✓</span> تأثيرات انتقال مخصصة</li>
+          </ul>
+        </div>
+        <div class="launcher-visual">
+          <div class="launcher-mockup">
+            <div class="lm-topbar">
+              <span>9:41</span>
+              <span>وسمو</span>
+            </div>
+            <div class="lm-grid">
+              <div class="lm-app" style="--c:#00f5ff">📱</div>
+              <div class="lm-app" style="--c:#ff6b35">🎨</div>
+              <div class="lm-app" style="--c:#a855f7">🎬</div>
+              <div class="lm-app" style="--c:#10b981">☁️</div>
+              <div class="lm-app" style="--c:#f59e0b">▶️</div>
+              <div class="lm-app" style="--c:#ef4444">⬇️</div>
+              <div class="lm-app" style="--c:#3b82f6">⚽</div>
+              <div class="lm-app" style="--c:#ec4899">🎭</div>
+              <div class="lm-app" style="--c:#8b5cf6">📄</div>
+            </div>
+            <div class="lm-dock">
+              <div class="lm-dock-app">🏠</div>
+              <div class="lm-dock-app">🔍</div>
+              <div class="lm-dock-app">📞</div>
+              <div class="lm-dock-app">⚙️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APPS GRID ===== -->
+  <section class="apps-section" id="apps">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">التطبيقات المدمجة</div>
+        <h2>٩ تطبيقات في حزمة واحدة</h2>
+        <p>كل تطبيق صُمِّم ليكون الأفضل في فئته</p>
+      </div>
+
+      <div class="apps-grid">
+
+        <!-- Wesmo Vision -->
+        <div class="app-card" data-app="vision">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#ff6b35">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو فيجون</h3>
+              <span class="app-category">تحرير الصور</span>
+            </div>
+            <div class="app-badge">احترافي</div>
+          </div>
+          <p class="app-desc">محرر صور احترافي يتجاوز PicsArt بأدوات تحرير محلية متقدمة، فلاتر ذكية، وطبقات غير محدودة — كل شيء على جهازك.</p>
+          <div class="app-features-row">
+            <span>🎨 طبقات غير محدودة</span>
+            <span>✂️ قطع ذكي بالذكاء الاصطناعي</span>
+            <span>🖌️ فرش احترافية</span>
+            <span>💾 محلي 100%</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Edit -->
+        <div class="app-card" data-app="edit">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#a855f7">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="23 7 16 12 23 17 23 7"/>
+                <rect x="1" y="5" width="15" height="14" rx="2"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو إيديت</h3>
+              <span class="app-category">تحرير الفيديو</span>
+            </div>
+            <div class="app-badge">قوي</div>
+          </div>
+          <p class="app-desc">محرر فيديو يضاهي CapCut وLightMotion مع أدوات أكثر، يعمل عبر عتاد الجهاز مباشرةً للحصول على أداء استثنائي.</p>
+          <div class="app-features-row">
+            <span>⚡ عتاد الجهاز فقط</span>
+            <span>🎵 مزامنة الموسيقى</span>
+            <span>✨ تأثيرات بصرية</span>
+            <span>📤 تصدير 4K</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Cloud -->
+        <div class="app-card" data-app="cloud">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#10b981">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو كلاود</h3>
+              <span class="app-category">التخزين السحابي</span>
+            </div>
+            <div class="app-badge">∞ مساحة</div>
+          </div>
+          <p class="app-desc">يستغل مساحة تيليغرام غير المحدودة — يُنشئ قناة خاصة، يُشفّر ملفاتك بصيغة .wesmo محلياً، ويرفعها بأمان تام.</p>
+          <div class="app-features-row">
+            <span>🔐 تشفير .wesmo</span>
+            <span>📱 تيليغرام API</span>
+            <span>🗂️ أرشيف Supabase</span>
+            <span>🔄 مزامنة تلقائية</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Tube -->
+        <div class="app-card" data-app="tube">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#ef4444">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42C1 8.14 1 11.75 1 11.75s0 3.61.46 5.33a2.78 2.78 0 0 0 1.95 1.96C5.12 19.5 12 19.5 12 19.5s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96C23 15.36 23 11.75 23 11.75s0-3.61-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو تيوب</h3>
+              <span class="app-category">يوتيوب متقدم</span>
+            </div>
+            <div class="app-badge">بريميوم</div>
+          </div>
+          <p class="app-desc">يوتيوب بمزايا البريميوم — بدون إعلانات، تشغيل في الخلفية، تحميل مقاطع، وجودة 4K بدون قيود.</p>
+          <div class="app-features-row">
+            <span>🚫 بلا إعلانات</span>
+            <span>🔊 خلفية</span>
+            <span>⬇️ تحميل</span>
+            <span>4K جودة</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Gate -->
+        <div class="app-card" data-app="gate">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#f59e0b">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو جايت</h3>
+              <span class="app-category">تحميل الوسائط</span>
+            </div>
+            <div class="app-badge">شامل</div>
+          </div>
+          <p class="app-desc">حمّل الفيديوهات والصور والصوت من آلاف المواقع — يوتيوب، إنستغرام، تيك توك، تويتر وأكثر بجودة عالية.</p>
+          <div class="app-features-row">
+            <span>🌐 1000+ موقع</span>
+            <span>🎵 MP3/MP4</span>
+            <span>📱 جميع المنصات</span>
+            <span>⚡ سرعة قصوى</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Sport -->
+        <div class="app-card" data-app="sport">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#3b82f6">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8c-2.5 0-4.5 2-4.5 4s2 4 4.5 4 4.5-2 4.5-4-2-4-4.5-4z"/>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو سبورت</h3>
+              <span class="app-category">البث الرياضي</span>
+            </div>
+            <div class="app-badge">مباشر</div>
+          </div>
+          <p class="app-desc">تابع المباريات والأحداث الرياضية مباشرةً — كرة القدم، كرة السلة، التنس وغيرها بجودة HD بدون انقطاع.</p>
+          <div class="app-features-row">
+            <span>⚽ كل الرياضات</span>
+            <span>📡 بث مباشر HD</span>
+            <span>📊 إحصائيات</span>
+            <span>🔔 تنبيهات</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Plus -->
+        <div class="app-card" data-app="plus">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#ec4899">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="15" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/>
+                <line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو +</h3>
+              <span class="app-category">الأفلام والمسلسلات</span>
+            </div>
+            <div class="app-badge">مجاني</div>
+          </div>
+          <p class="app-desc">منصة ترفيهية موحدة تجمع أفلام ومسلسلات من مختلف المنصات — نتفليكس، أمازون، ديزني وأكثر في مكان واحد.</p>
+          <div class="app-features-row">
+            <span>🎬 كل المنصات</span>
+            <span>🌍 محتوى عربي</span>
+            <span>📥 تحميل للمشاهدة</span>
+            <span>4K جودة</span>
+          </div>
+        </div>
+
+        <!-- Wesmo PDFs -->
+        <div class="app-card" data-app="pdfs">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#8b5cf6">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو PDFs</h3>
+              <span class="app-category">إدارة PDF</span>
+            </div>
+            <div class="app-badge">متكامل</div>
+          </div>
+          <p class="app-desc">صنع وتعديل ودمج وترجمة ملفات PDF باحترافية — اضغط ملفات، استخرج صفحات، وحوّل الملفات بكل صيغة.</p>
+          <div class="app-features-row">
+            <span>✏️ تحرير كامل</span>
+            <span>🔀 دمج وتقسيم</span>
+            <span>🌐 ترجمة فورية</span>
+            <span>🔒 تشفير</span>
+          </div>
+        </div>
+
+        <!-- Wesmo Scanner -->
+        <div class="app-card" data-app="scanner">
+          <div class="app-card-header">
+            <div class="app-icon-wrap" style="--app-color:#00f5ff">
+              <svg class="app-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="4 7 4 4 7 4"/>
+                <polyline points="17 4 20 4 20 7"/>
+                <polyline points="20 17 20 20 17 20"/>
+                <polyline points="7 20 4 20 4 17"/>
+                <rect x="8" y="8" width="8" height="8" rx="1"/>
+              </svg>
+            </div>
+            <div class="app-info">
+              <h3>وسمو سكانر</h3>
+              <span class="app-category">المسح والتعرف</span>
+            </div>
+            <div class="app-badge">ذكي</div>
+          </div>
+          <p class="app-desc">مسح QR وBarcode، استخراج النصوص وترجمتها فورياً، وتحويل المستندات الورقية إلى ملفات رقمية قابلة للبحث.</p>
+          <div class="app-features-row">
+            <span>📷 QR & Barcode</span>
+            <span>📝 OCR ذكي</span>
+            <span>🌐 ترجمة فورية</span>
+            <span>📄 رقمنة</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOWNLOAD ===== -->
+  <section class="download-section" id="download">
+    <div class="download-bg">
+      <div class="dl-orb dl-orb-1"></div>
+      <div class="dl-orb dl-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="download-box">
+        <div class="dl-icon-big">⬇</div>
+        <h2>حمّل وسمو الآن</h2>
+        <p>ملف APK واحد يحتوي على اللانشر + Neon Island + ٩ تطبيقات</p>
+
+        <div class="version-info">
+          <div class="ver-item">
+            <span class="ver-label">الإصدار</span>
+            <!-- ✏️ غيّر رقم الإصدار هنا -->
+            <span class="ver-val" id="appVersion">1.0.0</span>
+          </div>
+          <div class="ver-divider"></div>
+          <div class="ver-item">
+            <span class="ver-label">الحجم</span>
+            <!-- ✏️ غيّر حجم الملف هنا -->
+            <span class="ver-val" id="appSize">-- MB</span>
+          </div>
+          <div class="ver-divider"></div>
+          <div class="ver-item">
+            <span class="ver-label">Android</span>
+            <span class="ver-val">8.0+</span>
+          </div>
+        </div>
+
+        <!--
+        ╔══════════════════════════════════════════════════════════╗
+        ║            مكان ملف الـ APK                             ║
+        ║                                          
